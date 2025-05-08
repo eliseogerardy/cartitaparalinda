@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta para Blancalinda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #7f557d 0%, #a7617e 50%, #e78775 100%);
+      color: #f9f2f2;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .carta-container {
+      max-width: 700px;
+      background: linear-gradient(135deg, #4b384c 0%, #564958 100%);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 50px rgba(231, 135, 117, 0.2);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .carta-container:hover {
+      transform: translateY(-5px);
+    }
+    
+    .carta-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ff9e7d, #ffbf92, #ffd6a5);
+    }
+    
+    .carta-container::after {
+      content: "♥";
+      position: absolute;
+      bottom: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: rgba(255, 158, 125, 0.3);
+    }
+    
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      color: #ffbf92;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff9e7d, transparent);
+    }
+    
+    .saludo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: #ffd6a5;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      text-align: justify;
+      position: relative;
+      z-index: 1;
+      color: #f9f2f2;
+    }
+    
+    p::first-letter {
+      font-size: 1.3em;
+      color: #ffbf92;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 70%, rgba(255, 158, 125, 0.4) 100%);
+      padding: 0 3px;
+      color: #ffd6a5;
+    }
+    
+    .firma-container {
+      margin-top: 40px;
+      text-align: right;
+      position: relative;
+    }
+    
+    .firma {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: #ffd6a5;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .fecha {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: #e78775;
+    }
+    
+    .decoracion {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.08;
+    }
+    
+    .corazon1 {
+      top: 140px;
+      left: 50px;
+      font-size: 120px;
+      color: #ff9e7d;
+      transform: rotate(-20deg);
+    }
+    
+    .corazon2 {
+      bottom: 80px;
+      right: 60px;
+      font-size: 100px;
+      color: #ffbf92;
+      transform: rotate(15deg);
+    }
+    
+    @media (max-width: 600px) {
+      .carta-container {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    .ribbon {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
+    }
+    
+    .ribbon-content {
+      position: absolute;
+      display: block;
+      width: 180px;
+      padding: 8px 0;
+      background-color: #ff9e7d;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      color: white;
+      font-size: 0.8rem;
+      text-align: center;
+      right: -40px;
+      top: 30px;
+      transform: rotate(45deg);
+      font-weight: bold;
+    }
+    
+    /* Animación de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .carta-container {
+      animation: fadeIn 1s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="carta-container">
+    <div class="ribbon">
+      <span class="ribbon-content">De corazón</span>
+    </div>
+    
+    <h1>Para Blancalinda Desirée</h1>
+    
+    <div class="decoracion corazon1">♥</div>
+    <div class="decoracion corazon2">♥</div>
+    
+    <p class="saludo">
+      Hola Lindaaa,
+    </p>
+
+    <p>
+      Tal vez pensarás, <span class="highlight">¿Hizo esta página web?</span> y sí, son las 22:27 que empiezo a redactar esta cartita que te hice.
+      Es una inversión de tiempo, ya que es la forma que expreso lo que quiero decirte de corazón.
+      Tal vez no te lo digo en persona por cuestiones de tiempos o porque esa sonrisa me pone nervioso JAJAJA.
+    </p>
+
+    <p>
+      Pero acá estoyy, escribiendo algo que sale de mí, normalmente no me intereso en alguna persona. Pero
+      si te soy sincero, contigo lo estoy empezando hacer.
+      Y en estos días al cambio de periodo estaba esperanzado en verte, pero no estabaaas. Muy bien, el día
+      que leas esto será jueveeees, y acá si te di esta cartita y sé que te diré cuando me despida de ti
+      <span class="highlight">"QUIERO REGRESAR AL MUNDO DE LOS VIVOS PARA ESTAR CON VICTORIA"</span>
+      ¿Por qué dije esto? porque quiero sobrepasar límites para poder hacerte saber que me importas muchoooteee,
+      así como la película que me hiciste descubrir (El Cavadver de la Novia), llevo en mente esa película ya que 
+      por ti la vi, y lo llevo muy presente.
+    </p>
+    
+    <p>
+      La verdad, este año siento una curiosidad tremenda por conocerte más. Me pareces una persona interesante, única, 
+      y con una energía que se nota desde lejos (aunque no te vea en clases, JAJAJA).
+    </p>
+
+    <p>
+      Yo sé que en estos días no lo has pasado del todo bien, no sé exactamente por lo que estás pasando, 
+      pero lo que sí sé es que deseo de corazón que estés bien. 
+      Mi prioridad ahora es verte sonreír, verte tranquila, verte brillando como siempre te veo y no te das cuenta JAJAJ. 
+      <span class="highlight">Me importas más de lo que imaginas</span> y quiero que lo sepas, aunque sea a través de estas líneas.
+    </p>
+    
+    <p>
+      Permiteme conocerte más, estoy encantado de hacerlo, ver cada cosita linda de ti.
+      Y que estos grandes cógidos de programación de HTML, sea equivalente a conocer cada detalle de ti.
+      No olvides que Deseo para ti todo lo lindo: amor, calma, fuerza y claridad. No estás sola, si necesitas a un tal Eliseo
+      (que es de tu familia pero no lo sabes) acá estoy para ti, sea lo que sea, pase lo que pase.
+      Y si algún día decides hablar o compartir un momento, estaré feliz de escucharte. 
+    </p>
+
+    <div class="firma-container">
+      <div class="firma">
+        Con cariño,<br>
+        Gerardy Eliseo 💌
+      </div>
+      <div class="fecha">Mayo, 2025</div>
+    </div>
+  </div>
+</body>
+</html>
